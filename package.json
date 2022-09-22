@@ -1,0 +1,38 @@
+{
+  "name": "sterling-customermanagement_api",
+  "version": "1.0.0",
+  "description": "Sterling Customer Management API",
+  "exports": "./server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Revent-Technologies/Sterling-CustomerManagement_API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Revent-Technologies/Sterling-CustomerManagement_API/issues"
+  },
+  "homepage": "https://github.com/Revent-Technologies/Sterling-CustomerManagement_API#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "helmet": "^6.0.0",
+    "jest": "^29.0.3",
+    "mongoose": "^6.6.1",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.0",
+    "uuidv4": "^6.2.13"
+  }
+}
