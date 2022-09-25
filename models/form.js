@@ -12,7 +12,7 @@ const formSchema = new mongoose.Schema(
       formNavigation:  { 
         type: String,
         required: true,
-        enum: ["tabs", "wizarrd", "accodion", "spyform"],
+        enum: ["tabs", "wizarrd", "accodion", "single-page"],
       },
       builtFormMetadata:{ 
         type: Object,
