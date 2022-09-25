@@ -1,6 +1,9 @@
 import chalk from "chalk";
 import app from "./app.js";
 
+//mongo db conection
+import { mongoConfig } from "./config/mongo.js";
+
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -23,6 +26,7 @@ const port = normalizePort(process.env.PORT || "5050");
 const server = app.listen(port, async () => {
   const address = server.address();
   const bind = typeof address === "string" ? `pipe ${address}` : `port ${port}`;
-
+  // Mongo Config
+  mongoConfig;
   console.log(`Listening on ${chalk.green(bind)}`);
 });
