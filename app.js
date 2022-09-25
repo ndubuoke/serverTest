@@ -25,6 +25,10 @@ app.get("/", (req, res) => {
   });
 });
 
+//mongo db conection
+import { mongoConfig } from './config/database.js';
+mongoConfig;
+
 // Routes
 import routes from "./routes/index.js";
 
