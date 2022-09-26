@@ -16,6 +16,11 @@ const formItemSchema = new mongoose.Schema(
         type: Schema.Types.ObjectId,
          ref: 'form',
          required: true,
+      },  
+      controlId:  { 
+        type: Schema.Types.ObjectId,
+         ref: 'control',
+         required: true,
       },
       createdBy:{ 
         type: String,
