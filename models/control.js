@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { CONTROL_TYPES, getEnumsArray } from "../utils/enums";
 
 const controlSchema = new mongoose.Schema(
   {
@@ -9,16 +10,15 @@ const controlSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-      controlTypeId:  { 
-        type: Schema.Types.ObjectId,
-         ref: 'controltype',
-         required: true,
+      controlType:  { 
+        type: String,
+        enum: [...getEnumsArray(CONTROL_TYPES)],
+        required: true,
       },
-      controlValueTypeId:  { 
-        type: Schema.Types.ObjectId,
-         ref: 'controlvaluetype',
-         required: true,
-      },
+      controlProperty: [{
+        type : Schema.Types.ObjectId,
+         ref: 'controlproperty' 
+     }],
       createdBy:{ 
         type: String,
         required: true,

@@ -9,9 +9,6 @@ const formItemSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-      placeholder: {
-        type: String,
-      },
       formId:  { 
         type: Schema.Types.ObjectId,
          ref: 'form',
