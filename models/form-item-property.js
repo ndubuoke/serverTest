@@ -62,4 +62,4 @@ const FormItemProperty = mongoose.model(
   formItemPropertySchema
 );
 
-export { FormItem };
+export { FormItemProperty };
