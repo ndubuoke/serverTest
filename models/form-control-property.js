@@ -1,7 +1,8 @@
 import mongoose, { Schema } from "mongoose";
-import { CONTROL_TYPES, getEnumsArray } from "../utils/enums";
+import { FORM_CONTROL_TYPES, getEnumsArray } from "../utils/enums";
 
-const controlSchema = new mongoose.Schema(
+
+const formControlPropertySchema = new mongoose.Schema(
   {
       name: {
         type: String,
@@ -10,15 +11,17 @@ const controlSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-      controlType:  { 
+      formControlType:  { 
         type: String,
-        enum: [...getEnumsArray(CONTROL_TYPES)],
+        enum: [...getEnumsArray(FORM_CONTROL_TYPES)],
         required: true,
       },
-      controlProperty: [{
-        type : Schema.Types.ObjectId,
-         ref: 'controlproperty' 
-     }],
+      defaultState:  { 
+        type: String,
+      },
+      formControlPropertyItems: {
+         type : Array
+      },
       createdBy:{ 
         type: String,
         required: true,
@@ -43,7 +46,6 @@ const controlSchema = new mongoose.Schema(
       },
       statusDesc :{ 
         type: String,
-        required: true,
         default: "The record is enabled",
       }, 
   },
@@ -53,9 +55,9 @@ const controlSchema = new mongoose.Schema(
   }
 );
 
-const Control = mongoose.model(
-  "control",
-  controlSchema
+const FormControlProperty = mongoose.model(
+  "formcontrolproperty",
+  formControlPropertySchema
 );
 
-export { Control };
+export { FormControlProperty };

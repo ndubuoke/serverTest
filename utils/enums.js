@@ -3,7 +3,7 @@ export const getEnumsArray = object => {
     return [...Object.values(object)]
   }
 
-export const CONTROL_TYPES = Object.freeze({
+export const FORM_CONTROL_TYPES = Object.freeze({
   TEXT_INPUT: "text_input",
   TOGGLE: "toggle",
   DROPDOWN_FIELD: "dropdown_field",

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import chalk from "chalk";
 import { ControlPropertyItem } from "../models/control-property-item.js";
-import { ControlProperty } from "../models/control-property.js";
-import { Control } from "../models/control.js";
+import { ControlProperty } from "../models/form-control-property.js";
+import { Control } from "../models/form-control.js";
 import { ControlType } from "../models/control-type.js";
 import { ControlValueType } from "../models/control-value-type.js";
 import { FormItem } from "../models/form-item.js";

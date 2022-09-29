@@ -18,9 +18,9 @@ const formItemPropertySchema = new mongoose.Schema(
       ref: "formitem",
       required: true,
     },
-    controlPropertyId: {
+    formControlPropertyId: {
       type: Schema.Types.ObjectId,
-      ref: "controlproperty",
+      ref: "formcontrolproperty",
       required: true,
     },
     createdBy: {
@@ -47,7 +47,6 @@ const formItemPropertySchema = new mongoose.Schema(
     },
     statusDesc: {
       type: String,
-      required: true,
       default: "The record is enabled",
     },
   },
