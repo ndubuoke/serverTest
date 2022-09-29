@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import chalk from "chalk";
 import { ControlPropertyItem } from "../models/control-property-item.js";
-import { ControlProperty } from "../models/control-property.js";
-import { Control } from "../models/control.js";
+import { ControlProperty } from "../models/form-control-property.js";
+import { Control } from "../models/form-control.js";
 import { ControlType } from "../models/control-type.js";
 import { ControlValueType } from "../models/control-value-type.js";
 import { FormItem } from "../models/form-item.js";
@@ -34,41 +34,41 @@ export const mongoConfig = mongoose
 
     // seed database
     const seed = async () => {
-       const controlPropertyItems = new ControlPropertyItem({
-        name: "Control Property Item 1",
-        description: "Control Property Item 1 Description",
-        createdBy: "System",
-        createdById: "System",
-        lastModifiedBy: "System",
-        lastModifiedById: "System",
-        status: "enabled",
-        statusDesc: "The record is enabled",
-    });
-    await controlPropertyItems.save();
+    //    const controlPropertyItems = new ControlPropertyItem({
+    //     name: "Control Property Item 1",
+    //     description: "Control Property Item 1 Description",
+    //     createdBy: "System",
+    //     createdById: "System",
+    //     lastModifiedBy: "System",
+    //     lastModifiedById: "System",
+    //     status: "enabled",
+    //     statusDesc: "The record is enabled",
+    // });
+    // await controlPropertyItems.save();
 
-    const controlType = new ControlType({
-        name: "Control Type 1",
-        description: "Control Type 1 Description",
-        createdBy: "System",
-        createdById: "System",
-        lastModifiedBy: "System",
-        lastModifiedById: "System",
-        status: "enabled",
-        statusDesc: "The record is enabled",
-    });
-    await controlType.save();
+    // const controlType = new ControlType({
+    //     name: "Control Type 1",
+    //     description: "Control Type 1 Description",
+    //     createdBy: "System",
+    //     createdById: "System",
+    //     lastModifiedBy: "System",
+    //     lastModifiedById: "System",
+    //     status: "enabled",
+    //     statusDesc: "The record is enabled",
+    // });
+    // await controlType.save();
 
-    const controlValueType = new ControlValueType({
-        name: "Control Value Type 1",
-        description: "Control Value Type 1 Description",
-        createdBy: "System",
-        createdById: "System",
-        lastModifiedBy: "System",
-        lastModifiedById: "System",
-        status: "enabled",
-        statusDesc: "The record is enabled",
-    });
-    await controlValueType.save();
+    // const controlValueType = new ControlValueType({
+    //     name: "Control Value Type 1",
+    //     description: "Control Value Type 1 Description",
+    //     createdBy: "System",
+    //     createdById: "System",
+    //     lastModifiedBy: "System",
+    //     lastModifiedById: "System",
+    //     status: "enabled",
+    //     statusDesc: "The record is enabled",
+    // });
+    // await controlValueType.save();
 
     const control = new Control({
         name: "Control 1",

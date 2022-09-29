@@ -9,17 +9,14 @@ const formItemSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-      placeholder: {
-        type: String,
-      },
       formId:  { 
         type: Schema.Types.ObjectId,
          ref: 'form',
          required: true,
       },  
-      controlId:  { 
+      formControlId:  { 
         type: Schema.Types.ObjectId,
-         ref: 'control',
+         ref: 'formcontrol',
          required: true,
       },
       createdBy:{ 
@@ -46,7 +43,6 @@ const formItemSchema = new mongoose.Schema(
       },
       statusDesc :{ 
         type: String,
-        required: true,
         default: "The record is enabled",
       }, 
   },

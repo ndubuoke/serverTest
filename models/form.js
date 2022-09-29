@@ -42,7 +42,6 @@ const formSchema = new mongoose.Schema(
     },
     statusDesc: {
       type: String,
-      required: true,
       default: "The record is enabled",
     },
   },
