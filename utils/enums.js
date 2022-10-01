@@ -1,7 +1,6 @@
-
-export const getEnumsArray = object => {
-    return [...Object.values(object)]
-  }
+export const getEnumsArray = (object) => {
+  return [...Object.values(object)];
+};
 
 export const FORM_CONTROL_TYPES = Object.freeze({
   TEXT_INPUT: "text_input",
@@ -15,7 +14,6 @@ export const FORM_CONTROL_TYPES = Object.freeze({
   DECIMAL_INPUT: "decimal_input",
   FILE_UPLOAD_ZONE: "file_upload_zone",
   SECTION: "section",
-  PAGE: "page"
+  PAGE: "page",
+  HYBRID: "hybrid",
 });
-
-
