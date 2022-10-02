@@ -1,7 +1,6 @@
-
-export const getEnumsArray = object => {
-    return [...Object.values(object)]
-  }
+export const getEnumsArray = (object) => {
+  return [...Object.values(object)];
+};
 
 export const FORM_CONTROL_TYPES = Object.freeze({
   TEXT_INPUT: "text_input",
@@ -16,29 +15,29 @@ export const FORM_CONTROL_TYPES = Object.freeze({
   FILE_UPLOAD_ZONE: "file_upload_zone",
   SECTION: "section",
   PAGE: "page",
-  CHECKBOX :"checkbox",
-  LABEL: "label"
+  CHECKBOX: "checkbox",
+  LABEL: "label",
+  HYBRID: "hybrid",
+  HEADING: "heading",
+  BUTTON: "button",
+  PASSWORD: "password",
 });
-
 
 export const FORM_TYPES = Object.freeze({
   INDIVIDUALACCELARATED: "individualAccelerated",
   INDIVIDUALLEGACY: "individualLegacy",
   SMEACCELERATED: "smeAccelerated",
-  SMELEGACY: "smeLegacy"
+  SMELEGACY: "smeLegacy",
 });
-
 
 export const STATUS = Object.freeze({
   ACTIVE: "active",
   INACTIVE: "inactive",
-  DEACTIVATED: "deactivated"
+  DEACTIVATED: "deactivated",
 });
-
-
 
 export const FORM_STATUS = Object.freeze({
   DRAFT: "draft",
   PUBLISHED: "published",
-  DEACTIVATED: "deactivated"
+  DEACTIVATED: "deactivated",
 });
