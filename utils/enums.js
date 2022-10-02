@@ -17,6 +17,10 @@ export const FORM_CONTROL_TYPES = Object.freeze({
   PAGE: "page",
   CHECKBOX: "checkbox",
   LABEL: "label",
+  HYBRID: "hybrid",
+  HEADING: "heading",
+  BUTTON: "button",
+  PASSWORD: "password",
 });
 
 export const FORM_TYPES = Object.freeze({

@@ -24,7 +24,7 @@ router.patch(
 // UPDATE PROPERTY BY ID
 router.patch("/:id/", formControlPropertyController.updateOne); // ✔
 
-// DELETE PROPERTY STATUS
+// DELETE PROPERTY
 router.delete("/:id/", formControlPropertyController.deleteOne); // ✔
 
 // SEED PROPERTIES

@@ -1,10 +1,8 @@
-import { FormControlProperty } from "../models/form-control-property.js";
-
 export const FORM_CONTROL_PROPERTY = [
   {
     name: "Page name",
     description: "With character limit of 50. It defines the name of the page",
-    formControlType: "page",
+    formControlType: "text_input",
     defaultState: "Page [Number]",
     lastModifiedById: "System admin",
     lastModifiedBy: "System admin",
@@ -36,7 +34,7 @@ export const FORM_CONTROL_PROPERTY = [
     name: "Section name",
     description:
       "With character limit of 50. It defines the name of the section",
-    formControlType: "section",
+    formControlType: "text_input",
     defaultState: "Section [Number]",
     lastModifiedById: "System admin",
     lastModifiedBy: "System admin",
@@ -508,16 +506,3 @@ export const FORM_CONTROL_PROPERTY = [
     createdBy: "System admin",
   },
 ];
-
-// export const SEED = [
-//   new FormControlProperty(  {
-//     name: "Page name",
-//     description: "With character limit of 50. It defines the name of the page",
-//     formControlType: "page",
-//     defaultState: "Page [Number]",
-//     lastModifiedById,
-//     lastModifiedBy,
-//     createdById,
-//     createdBy,
-//   },)
-// ]

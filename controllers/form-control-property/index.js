@@ -2,7 +2,7 @@ import { FORM_CONTROL_PROPERTY } from "../../seeders/form-control-properties.see
 import formControlPropertyService from "../../services/form-control-property-service.js";
 import { errorResMsg, successResMsg } from "../../utils/response.js";
 
-class ControlPropertyController {
+class FormControlPropertyController {
   async findAll(req, res) {
     try {
       const formControlProperties = await formControlPropertyService.findAll();
@@ -90,7 +90,7 @@ class ControlPropertyController {
 
   async bulkCreate(req, res) {
     try {
-      const payload = FORM_CONTROL_PROPERTY;
+      // const payload = FORM_CONTROL_PROPERTY;
 
       await formControlPropertyService.bulkCreate(FORM_CONTROL_PROPERTY);
 
@@ -190,4 +190,4 @@ class ControlPropertyController {
   }
 }
 
-export default new ControlPropertyController();
+export default new FormControlPropertyController();
