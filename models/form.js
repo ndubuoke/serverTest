@@ -1,4 +1,5 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
+import { FORM_TYPES, STATUS , FORM_STATUS} from "../utils/enums";
 
 const formSchema = new mongoose.Schema(
   {
@@ -9,10 +10,23 @@ const formSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    formNavigation: {
+    formType: {
+      type: String,
+      enum: [...getEnumsArray(FORM_TYPES)],
+      required: true,
+    },
+    formTypeDesc: {
+      type: String
+    },
+    formStatus: {
       type: String,
       required: true,
-      enum: ["tabs", "wizard", "accordion", "single-page"],
+      enum: [...getEnumsArray(FORM_STATUS)],
+    },
+    version: {
+      type: Number,
+      required: true,
+      default: 1,
     },
     builtFormMetadata: {
       type: Object,
@@ -34,16 +48,16 @@ const formSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    status: {
+    status :{ 
       type: String,
       required: true,
-      default: "enabled",
-      enum: ["enabled", "disabled", "edit-mode"],
+      default: "active",
+      enum: [...getEnumsArray(STATUS)]
     },
-    statusDesc: {
+    statusDesc :{ 
       type: String,
-      default: "The record is enabled",
-    },
+      default: "The record is active",
+    }, 
   },
 
   {
