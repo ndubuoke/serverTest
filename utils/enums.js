@@ -15,5 +15,25 @@ export const FORM_CONTROL_TYPES = Object.freeze({
   FILE_UPLOAD_ZONE: "file_upload_zone",
   SECTION: "section",
   PAGE: "page",
-  HYBRID: "hybrid",
+  CHECKBOX: "checkbox",
+  LABEL: "label",
+});
+
+export const FORM_TYPES = Object.freeze({
+  INDIVIDUALACCELARATED: "individualAccelerated",
+  INDIVIDUALLEGACY: "individualLegacy",
+  SMEACCELERATED: "smeAccelerated",
+  SMELEGACY: "smeLegacy",
+});
+
+export const STATUS = Object.freeze({
+  ACTIVE: "active",
+  INACTIVE: "inactive",
+  DEACTIVATED: "deactivated",
+});
+
+export const FORM_STATUS = Object.freeze({
+  DRAFT: "draft",
+  PUBLISHED: "published",
+  DEACTIVATED: "deactivated",
 });

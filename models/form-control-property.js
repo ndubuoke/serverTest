@@ -1,5 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-import { FORM_CONTROL_TYPES, getEnumsArray } from "../utils/enums.js";
+import mongoose from "mongoose";
+import { FORM_CONTROL_TYPES, getEnumsArray, STATUS } from "../utils/enums";
 
 const formControlPropertySchema = new mongoose.Schema(
   {
@@ -14,6 +14,9 @@ const formControlPropertySchema = new mongoose.Schema(
       type: String,
       enum: [...getEnumsArray(FORM_CONTROL_TYPES)],
       required: true,
+    },
+    formControlTypeDesc: {
+      type: String,
     },
     defaultState: {
       type: String,
@@ -48,15 +51,14 @@ const formControlPropertySchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      default: "enabled",
-      enum: ["enabled", "disabled"],
+      default: "active",
+      enum: [...getEnumsArray(STATUS)],
     },
     statusDesc: {
       type: String,
-      default: "The record is enabled",
+      default: "The record is active",
     },
   },
-
   {
     timestamps: true,
   }
