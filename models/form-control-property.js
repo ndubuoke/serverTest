@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { FORM_CONTROL_TYPES, getEnumsArray, STATUS } from "../utils/enums";
+import { FORM_CONTROL_TYPES, getEnumsArray, STATUS } from "../utils/enums.js";
 
 const formControlPropertySchema = new mongoose.Schema(
   {
@@ -34,19 +34,19 @@ const formControlPropertySchema = new mongoose.Schema(
     ],
     createdBy: {
       type: String,
-      required: [true, "Please add the name of the creator"],
+      required: true,
     },
     createdById: {
       type: String,
-      required: [true, "Please add the ID of the creator"],
+      required: true,
     },
     lastModifiedBy: {
       type: String,
-      required: [true, "Please add the name of the last modifier"],
+      required: true,
     },
     lastModifiedById: {
       type: String,
-      required: [true, "Please add the name of the last modifier"],
+      required: true,
     },
     status: {
       type: String,
