@@ -85,6 +85,7 @@ class FormControlController {
 
   async bulkCreate(req, res) {
     try {
+      // HERE'S THE BULK_CREATE
       await formControlService.bulkCreate(FORM_CONTROL);
 
       return successResMsg(res, 201, {
