@@ -1,5 +1,6 @@
 import { FORM_CONTROL_PROPERTY } from "../../seeders/form-control-properties.seed.js";
 import formControlPropertyService from "../../services/form-control-property-service.js";
+import { STATUS } from "../../utils/enums.js";
 import { errorResMsg, successResMsg } from "../../utils/response.js";
 
 class FormControlPropertyController {
@@ -90,8 +91,6 @@ class FormControlPropertyController {
 
   async bulkCreate(req, res) {
     try {
-      // const payload = FORM_CONTROL_PROPERTY;
-
       await formControlPropertyService.bulkCreate(FORM_CONTROL_PROPERTY);
 
       return successResMsg(res, 201, {
@@ -109,6 +108,15 @@ class FormControlPropertyController {
     try {
       const { id, status } = req.params;
 
+      const statusValues = Object.values(STATUS);
+
+      if (!statusValues.includes(status)) {
+        return successResMsg(res, 400, {
+          message: "Invalid form control status",
+          data: null,
+        });
+      }
+
       const property_exists = await formControlPropertyService.findOne(id);
 
       if (!property_exists) {
@@ -120,7 +128,13 @@ class FormControlPropertyController {
 
       const updatedProperty = await formControlPropertyService.updateOne(
         { _id: id },
-        { status }
+        {
+          status,
+          statusDesc:
+            status === "deactivated"
+              ? `This record has been ${status}`
+              : `This record is ${status}`,
+        }
       );
 
       return successResMsg(res, 200, {
