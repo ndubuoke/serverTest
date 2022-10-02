@@ -5,7 +5,7 @@ import { ControlProperty } from "../models/form-control-property.js";
 import { Control } from "../models/form-control.js";
 import { ControlType } from "../models/control-type.js";
 import { ControlValueType } from "../models/control-value-type.js";
-import { FormItem } from "../models/form-item.js";
+import { FormItem } from "../models/form-type.js";
 import { FormItemProperty } from "../models/form-item-property.js";
 import { Form } from "../models/form.js";
 
