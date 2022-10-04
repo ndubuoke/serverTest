@@ -6,8 +6,8 @@ class FormService {
     return res;
   }
 
-  async updateOne(query, data) {
-    const res = await Form.findOneAndUpdate(query, data, {
+  async updateManyFormStatus(query, data) {
+    const res = await Form.updateMany(query, data, {
       new: true,
     }).select("-__v");
     return res;
@@ -15,6 +15,11 @@ class FormService {
 
   async findOne(id) {
     const res = await Form.findOne({ _id: id })
+    return res;
+  }
+
+  async findByFormType(formType) {
+    const res = await Form.findOne({ formType: formType })
     return res;
   }
 
@@ -31,6 +36,7 @@ class FormService {
   }
 
   async findAll(query) {
+    console.log(query)
     const res = await Form.find(query)
     return res;
   }

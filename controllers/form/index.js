@@ -5,11 +5,11 @@ import {formsDynamicQuery} from '../../utils/helper.js'
 class FormController {
   async findAll(req, res) {
     try {
-      const query = formsDynamicQuery(req)
+      const query =  await formsDynamicQuery(req.query)
       const form = await formService.findAll(query);
 
       return successResMsg(res, 200, {
-        message: "Form controls fetched successfully",
+        message: "Form  fetched successfully",
         data: form,
       });
     } catch (error) {
@@ -52,7 +52,7 @@ class FormController {
 
       if (!form_exists) {
         return successResMsg(res, 404, {
-          message: "Form not found",
+          message: "Form not available at the moment. Check back later",
           data: null,
         });
       }
@@ -153,32 +153,32 @@ class FormController {
     }
   }
 
-  
   async updateOne(req, res) {
     try {
-      const { id } = req.params;
-      const payload = req.body;
-      const query = { _id: id };
-
+      const { id } = req.params; payload = req.body;  query = { formType: req.body.formType }; updateStatusQuery = {formStatus: "deactivated"};
       const form_exists = await formService.findOne(id);
 
       if (!form_exists) {
         return successResMsg(res, 404, {
-          message: "Form control not found",
+          message: "Form  not found",
           data: null,
         });
       }
 
-      const updated_form_exists = await formService.updateOne(
+      const updated_form_exists = await formService.updateManyFormStatus(
         query,
-        payload
+        updateStatusQuery
       );
+   
+
+      const form = await formService.createOne(payload);
 
       return successResMsg(res, 200, {
-        message: "Form control updated successfully",
-        data: updated_form_exists,
+        message: "Form updated successfully",
+        data: form,
       });
     } catch (error) {
+      console.log(error)
       return errorResMsg(res, 500, {
         message: "Something went wrong while updating form",
       });
@@ -187,14 +187,23 @@ class FormController {
 
   async createOne(req, res) {
     try {
+      const{ formType} = req.body
+      const form_exists = await formService.findByFormType(formType);
+      if (form_exists) {
+        return successResMsg(res, 400, {
+          message: "Form type already exist, please fetch the published one and update",
+          data: null,
+        });
+      }
       const payload = req.body;
       const form = await formService.createOne(payload);
 
       return successResMsg(res, 200, {
-        message: "Form control created successfully",
+        message: "Form  created successfully",
         data: form,
       });
     } catch (error) {
+      console.log(error)
       return errorResMsg(res, 500, {
         message: "Something went wrong while creating form",
       });
