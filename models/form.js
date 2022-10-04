@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { FORM_TYPES, STATUS , FORM_STATUS} from "../utils/enums";
+import { FORM_TYPES, STATUS , FORM_STATUS,getEnumsArray} from "../utils/enums.js";
 
 const formSchema = new mongoose.Schema(
   {
