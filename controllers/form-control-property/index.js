@@ -72,15 +72,24 @@ class FormControlPropertyController {
   async createOne(req, res) {
     try {
       const payload = req.body;
+
+      // Check if control prop. exists
+      const control_property_exists =
+        await formControlPropertyService.findOneByName(payload?.name);
+      if (control_property_exists) {
+        return successResMsg(res, 404, {
+          message: "Form control property already exists",
+          data: control_property_exists,
+        });
+      }
+
       const controlProperty = await formControlPropertyService.createOne(
         payload
       );
 
-      console.log(controlProperty);
-
-      return successResMsg(res, 200, {
+      return successResMsg(res, 201, {
         message: "Form control property created successfully",
-        data: null,
+        data: controlProperty,
       });
     } catch (error) {
       return errorResMsg(res, 500, {

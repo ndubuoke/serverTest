@@ -70,9 +70,21 @@ class FormControlController {
   async createOne(req, res) {
     try {
       const payload = req.body;
+
+      // Check if control exists
+      const control_exists = await formControlService.findOneByName(
+        payload?.name
+      );
+      if (control_exists) {
+        return successResMsg(res, 404, {
+          message: "Form control already exists",
+          data: control_exists,
+        });
+      }
+
       const formControl = await formControlService.createOne(payload);
 
-      return successResMsg(res, 200, {
+      return successResMsg(res, 201, {
         message: "Form control created successfully",
         data: formControl,
       });
