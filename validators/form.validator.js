@@ -1,9 +1,6 @@
 
 import { body, oneOf, validationResult, check, param } from 'express-validator';
 
-
-
-
 export const expressValidator = (req, res, next) => {
         const errors = validationResult(req);
         var messages = [];
@@ -35,12 +32,9 @@ export const createFormValidator = () => [
         check('builtFormMetadata.pages.*.pageProperties.*.formControlType').notEmpty().withMessage('Field formControlType for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.pageProperties.*.id').notEmpty().withMessage('Field name for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.pageProperties.*.value').notEmpty().withMessage('Field value for Page Properties  is required').bail(),
-        oneOf([
-           check('builtFormMetadata.pages.*.sections').optional().isArray().withMessage('Sections must be an array').not().isEmpty().withMessage('Sections can not be empty').bail(),
-           check('builtFormMetadata.pages.*.fields').optional().isArray().withMessage('Fields must be an array').not().isEmpty().withMessage('Fields can not be empty').bail()
-        ]),
+        check('builtFormMetadata.pages.*.sections').isArray().withMessage('Sections must be an array'),
+        check('builtFormMetadata.pages.*.fields').isArray().withMessage('Fields must be an array')
 ]
-
 
 // update form status  validator
 export const updateFormdStatusValidator = () => [
