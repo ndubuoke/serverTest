@@ -23,12 +23,17 @@ class FormControlController {
     try {
       const { id } = req.params;
 
+      if (id === ":id" || id === "") {
+        return errorResMsg(res, 400, {
+          message: "Please enter the form control id as parameter",
+        });
+      }
+
       const control_exists = await formControlService.findOne(id);
 
       if (!control_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control not found",
-          data: null,
         });
       }
 
@@ -46,13 +51,19 @@ class FormControlController {
   async findOneByName(req, res) {
     try {
       const { name } = req.params;
-
-      const control_exists = await formControlService.findOneByName(name);
+      if (name === ":name" || name === "") {
+        return errorResMsg(res, 400, {
+          message: "Please enter the form control name as parameter",
+        });
+      }
+      const trimmedName = name.trim();
+      const control_exists = await formControlService.findOneByName(
+        trimmedName
+      );
 
       if (!control_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control not found",
-          data: null,
         });
       }
 
@@ -71,14 +82,19 @@ class FormControlController {
     try {
       const payload = req.body;
 
+      if (!payload?.formControlProperties.length) {
+        return errorResMsg(res, 400, {
+          message: "Form control must have at least one property",
+        });
+      }
+
       // Check if control exists
       const control_exists = await formControlService.findOneByName(
         payload?.name
       );
       if (control_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 400, {
           message: "Form control already exists",
-          data: control_exists,
         });
       }
 
@@ -118,18 +134,14 @@ class FormControlController {
       const statusValues = Object.values(STATUS);
 
       if (!statusValues.includes(status)) {
-        return successResMsg(res, 400, {
-          message: "Invalid form control property status",
-          data: null,
-        });
+        return errorResMsg(res, 400, "Invalid form control property status");
       }
 
       const control_exists = await formControlService.findOne(id);
 
       if (!control_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control not found",
-          data: null,
         });
       }
 
@@ -162,9 +174,8 @@ class FormControlController {
       const control_exists = await formControlService.findOne(id);
 
       if (!control_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control not found",
-          data: null,
         });
       }
 
@@ -181,8 +192,6 @@ class FormControlController {
     }
   }
 
-
-
   async updateOne(req, res) {
     try {
       const { id } = req.params;
@@ -192,9 +201,8 @@ class FormControlController {
       const control_exists = await formControlService.findOne(id);
 
       if (!control_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control not found",
-          data: null,
         });
       }
 

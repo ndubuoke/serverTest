@@ -26,9 +26,8 @@ class FormControlPropertyController {
       const property_exists = await formControlPropertyService.findOne(id);
 
       if (!property_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control property not found",
-          data: null,
         });
       }
 
@@ -52,9 +51,8 @@ class FormControlPropertyController {
       );
 
       if (!property_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control property not found",
-          data: null,
         });
       }
 
@@ -77,9 +75,8 @@ class FormControlPropertyController {
       const control_property_exists =
         await formControlPropertyService.findOneByName(payload?.name);
       if (control_property_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 400, {
           message: "Form control property already exists",
-          data: control_property_exists,
         });
       }
 
@@ -120,9 +117,8 @@ class FormControlPropertyController {
       const statusValues = Object.values(STATUS);
 
       if (!statusValues.includes(status)) {
-        return successResMsg(res, 400, {
+        return errorResMsg(res, 400, {
           message: "Invalid form control status",
-          data: null,
         });
       }
 
@@ -164,9 +160,8 @@ class FormControlPropertyController {
       const property_exists = await formControlPropertyService.findOne(id);
 
       if (!property_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control property not found",
-          data: null,
         });
       }
 
@@ -192,9 +187,8 @@ class FormControlPropertyController {
       const property_exists = await formControlPropertyService.findOne(id);
 
       if (!property_exists) {
-        return successResMsg(res, 404, {
+        return errorResMsg(res, 404, {
           message: "Form control property not found",
-          data: null,
         });
       }
 
