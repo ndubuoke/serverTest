@@ -20,7 +20,7 @@ export const createFormValidator = () => [
   body("description")
     .optional()
     .isString()
-    .withMessage("description must be a string"),
+    .withMessage("description must be  a string"),
   body("formType")
     .notEmpty()
     .isString()
@@ -82,24 +82,12 @@ export const createFormValidator = () => [
     .notEmpty()
     .withMessage("Field value for Page Properties  is required")
     .bail(),
-  oneOf([
-    check("builtFormMetadata.pages.*.sections")
-      .optional()
-      .isArray()
-      .withMessage("Sections must be an array")
-      .not()
-      .isEmpty()
-      .withMessage("Sections can not be empty")
-      .bail(),
-    check("builtFormMetadata.pages.*.fields")
-      .optional()
-      .isArray()
-      .withMessage("Fields must be an array")
-      .not()
-      .isEmpty()
-      .withMessage("Fields can not be empty")
-      .bail(),
-  ]),
+  check("builtFormMetadata.pages.*.sections")
+    .isArray()
+    .withMessage("Sections must be an array"),
+  check("builtFormMetadata.pages.*.fields")
+    .isArray()
+    .withMessage("Fields must be an array"),
 ];
 
 // update form status  validator
