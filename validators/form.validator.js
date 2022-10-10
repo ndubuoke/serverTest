@@ -37,10 +37,11 @@ export const createFormValidator = () => [
 ]
 
 // update form status  validator
-export const updateFormdStatusValidator = () => [
+export const updateFormStatusValidator = () => [
         param('formStatus').notEmpty().isString().isIn(['draft', 'published', 'deactivated',]).withMessage('formStatus does contain a valid value'),
 ]
 
+//
 export const updateStatusValidator = () => [
         param('status').notEmpty().isString().isIn(['active', 'inactive', 'deactivated',]).withMessage('Status does contain a valid value'),
 ]

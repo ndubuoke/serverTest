@@ -1,6 +1,7 @@
 import formService from "../../services/form-service.js";
 import { errorResMsg, successResMsg } from "../../utils/response.js";
 import {formsDynamicQuery} from '../../utils/helper.js'
+import { FORM_TYPES, getEnumsArray} from "../../utils/enums.js";
 
 class FormController {
   async findAll(req, res) {
@@ -14,7 +15,7 @@ class FormController {
       });
     } catch (error) {
       return errorResMsg(res, 500, {
-        message: "Something went wrong while creating form",
+        message: "Something went wrong while getting forms",
       });
     }
   }
@@ -210,6 +211,22 @@ class FormController {
     }
   }
 
+  
+  async findAllFormTypes(req, res) {
+    try {
+      const formTypes =  [...getEnumsArray(FORM_TYPES)];
+
+      return successResMsg(res, 200, {
+        message: "Form types fetched successfully",
+        data: formTypes,
+      });
+    } catch (error) {
+      console.log(error)
+      return errorResMsg(res, 500, {
+        message: "Something went wrong while getting form types",
+      });
+    }
+  }
 }
 
 export default new FormController();
