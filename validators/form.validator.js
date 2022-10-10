@@ -78,10 +78,6 @@ export const createFormValidator = () => [
     .notEmpty()
     .withMessage("Field name for Page Properties  is required")
     .bail(),
-  check("builtFormMetadata.pages.*.pageProperties.*.value")
-    .notEmpty()
-    .withMessage("Field value for Page Properties  is required")
-    .bail(),
   check("builtFormMetadata.pages.*.sections")
     .isArray()
     .withMessage("Sections must be an array"),
@@ -99,6 +95,7 @@ export const updateFormStatusValidator = () => [
     .withMessage("formStatus does contain a valid value"),
 ];
 
+//
 export const updateStatusValidator = () => [
   param("status")
     .notEmpty()
