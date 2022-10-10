@@ -31,7 +31,6 @@ export const createFormValidator = () => [
         check('builtFormMetadata.pages.*.pageProperties.*.name').notEmpty().withMessage('Field name for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.pageProperties.*.formControlType').notEmpty().withMessage('Field formControlType for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.pageProperties.*.id').notEmpty().withMessage('Field name for Page Properties  is required').bail(),
-        check('builtFormMetadata.pages.*.pageProperties.*.value').notEmpty().withMessage('Field value for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.sections').isArray().withMessage('Sections must be an array'),
         check('builtFormMetadata.pages.*.fields').isArray().withMessage('Fields must be an array')
 ]
