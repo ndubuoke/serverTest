@@ -31,16 +31,16 @@ export const createFormValidator = () => [
         check('builtFormMetadata.pages.*.pageProperties.*.name').notEmpty().withMessage('Field name for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.pageProperties.*.formControlType').notEmpty().withMessage('Field formControlType for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.pageProperties.*.id').notEmpty().withMessage('Field name for Page Properties  is required').bail(),
-        check('builtFormMetadata.pages.*.pageProperties.*.value').notEmpty().withMessage('Field value for Page Properties  is required').bail(),
         check('builtFormMetadata.pages.*.sections').isArray().withMessage('Sections must be an array'),
         check('builtFormMetadata.pages.*.fields').isArray().withMessage('Fields must be an array')
 ]
 
 // update form status  validator
-export const updateFormdStatusValidator = () => [
+export const updateFormStatusValidator = () => [
         param('formStatus').notEmpty().isString().isIn(['draft', 'published', 'deactivated',]).withMessage('formStatus does contain a valid value'),
 ]
 
+//
 export const updateStatusValidator = () => [
         param('status').notEmpty().isString().isIn(['active', 'inactive', 'deactivated',]).withMessage('Status does contain a valid value'),
 ]

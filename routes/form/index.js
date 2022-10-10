@@ -3,7 +3,7 @@ import formController from "../../controllers/form/index.js";
 
 import * as validator from '../../validators/form.validator.js';
 
-const { expressValidator, createFormValidator, updateFormdStatusValidator, updateStatusValidator } = validator;
+const { expressValidator, createFormValidator, updateFormStatusValidator, updateStatusValidator } = validator;
 
 const router = express.Router();
 
@@ -23,7 +23,7 @@ router.get("/:id", formController.findOne); // ✔
 router.patch("/:id/:status",  updateStatusValidator(), expressValidator, formController.updateStatus); // ✔
 
 // UPDATE FORM STATUS
-router.patch("/:id/formstatus/:formStatus", updateFormdStatusValidator(), expressValidator,  formController.updateFormStatus); // ✔
+router.patch("/:id/formstatus/:formStatus", updateFormStatusValidator(), expressValidator,  formController.updateFormStatus); // ✔
 
 // UPDATE FORM BY ID
 router.put("/:id/",  createFormValidator(), expressValidator, formController.updateOne); // ✔
@@ -31,6 +31,8 @@ router.put("/:id/",  createFormValidator(), expressValidator, formController.upd
 // DELETE FORMS 
 router.delete("/:id/", formController.deleteOne); // ✔
 
+// get all form type
+router.get("/types/all", formController.findAllFormTypes);
 
 
 export default router;
