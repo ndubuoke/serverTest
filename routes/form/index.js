@@ -3,16 +3,7 @@ import formController from "../../controllers/form/index.js";
 
 import * as validator from "../../validators/form.validator.js";
 
-<<<<<<< HEAD
-const {
-  expressValidator,
-  createFormValidator,
-  updateFormStatusValidator,
-  updateStatusValidator,
-} = validator;
-=======
 const { expressValidator, createFormValidator, updateFormStatusValidator, updateStatusValidator } = validator;
->>>>>>> e6bde01a47170dd19d7ab78b2515afdb5fdd8eaa
 
 const router = express.Router();
 
@@ -55,11 +46,8 @@ router.put(
 // DELETE FORMS
 router.delete("/:id/", formController.deleteOne); // ✔
 
-<<<<<<< HEAD
-=======
 // get all form type
 router.get("/types/all", formController.findAllFormTypes);
 
 
->>>>>>> e6bde01a47170dd19d7ab78b2515afdb5fdd8eaa
 export default router;
