@@ -1,29 +1,18 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const formBehaviourDataSchema = new mongoose.Schema(
   {
-    formId: {
-      type: Schema.Types.ObjectId,
+    formType: {
+      type: String,
       required: true,
-      ref: "form",
     },
-    behaviourId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "formbehaviours",
+    behaviourStatus: {
+      type: String,
     },
-    condition: {
-      if: {
-        type: string,
-      },
-      state: {
-        type: string,
-      },
-      value: {
-        type: string,
-      },
+    version: {
+      type: Number,
     },
-    actions: {
+    behaviours: {
       type: Array,
     },
     createdBy: {
@@ -53,4 +42,4 @@ const FormBehavioursData = mongoose.model(
   formBehaviourDataSchema
 );
 
-export { FormBehavioursData };
+export default FormBehavioursData;
