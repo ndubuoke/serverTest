@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   customer:
+    image: sterling/form_config_api
     build:
       dockerfile: Dockerfile
       context: "."
