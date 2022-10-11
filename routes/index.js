@@ -4,7 +4,6 @@ import formRouter from "./form/index.js";
 import formBehavioursDataRouter from "./form-behaviours-data/index.js";
 import formBehaviourRouter from "./form-behaviour/index.js";
 
-
 export default (app) => {
   app.use("/v1/form-control-property", formControlPropertyRouter); // Form control property router
   app.use("/v1/form-control", formControlRouter); // Form control router
