@@ -69,6 +69,7 @@ export const FORM_CONTROL_PROPERTY = [
       "Ranges from 1 to 3. This defines the number of columns the section can contain",
     formControlType: "dropdown_field",
     defaultState: "",
+    formControlPropertyItems: ["1", "2", "3"],
     lastModifiedById: "System admin",
     lastModifiedBy: "System admin",
     createdById: "System admin",
