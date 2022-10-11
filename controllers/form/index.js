@@ -1,6 +1,6 @@
 import formService from "../../services/form-service.js";
 import { errorResMsg, successResMsg } from "../../utils/response.js";
-import {formsDynamicQuery} from '../../utils/helper.js'
+import {formsDynamicQuery, generateFormTypesResponse} from '../../utils/helper.js'
 import { FORM_TYPES, getEnumsArray} from "../../utils/enums.js";
 
 class FormController {
@@ -215,10 +215,12 @@ class FormController {
   async findAllFormTypes(req, res) {
     try {
       const formTypes =  [...getEnumsArray(FORM_TYPES)];
+       
+      const structuredFormTypes = await generateFormTypesResponse(formTypes)
 
       return successResMsg(res, 200, {
         message: "Form types fetched successfully",
-        data: formTypes,
+        data: structuredFormTypes,
       });
     } catch (error) {
       console.log(error)
