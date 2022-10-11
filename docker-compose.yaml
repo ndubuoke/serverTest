@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  customer:
+    build:
+      dockerfile: Dockerfile
+      context: "."
+      target: "dev"
+    ports:
+      - 5050:5050
+    volumes:
+      - .:/src
+    command: npm run dev
+    env_file:
+      - ./.env
