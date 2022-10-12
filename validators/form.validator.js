@@ -22,24 +22,24 @@ export const createFormValidator = () => [
     .isString()
     .withMessage("description must be  a string"),
   body("formType")
-    .notEmpty()
-    .isString()
+    .notEmpty().withMessage("formType cannot be empty")
+    .isString().withMessage("formType must be a string")
     .isIn([
       "individualAccelerated",
       "individualLegacy",
       "smeAccelerated",
       "smeLegacy",
     ])
-    .withMessage("formType does contain a valid value"),
+    .withMessage("formType does not contain a valid value"),
   body("formTypeDesc")
     .optional()
     .isString()
     .withMessage("formTypeDesc must be  a string"),
   body("formStatus")
-    .notEmpty()
-    .isString()
+    .notEmpty().withMessage("formStatus cannot be empty")
+    .isString().withMessage("formStatus must be a string")
     .isIn(["draft", "published", "deactivated"])
-    .withMessage("formStatus does contain a valid value"),
+    .withMessage("formStatus does not contain a valid value"),
   body("lastModifiedById")
     .notEmpty()
     .withMessage("lastModifiedById is required"),
@@ -92,7 +92,7 @@ export const updateFormStatusValidator = () => [
     .notEmpty()
     .isString()
     .isIn(["draft", "published", "deactivated"])
-    .withMessage("formStatus does contain a valid value"),
+    .withMessage("formStatus does not contain a valid value"),
 ];
 
 //
@@ -101,5 +101,5 @@ export const updateStatusValidator = () => [
     .notEmpty()
     .isString()
     .isIn(["active", "inactive", "deactivated"])
-    .withMessage("Status does contain a valid value"),
+    .withMessage("Status does not contain a valid value"),
 ];
