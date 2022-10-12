@@ -15,7 +15,10 @@ afterEach(async () => {
   await removeAllCollections();
 });
 
+<<<<<<< HEAD
 let formId;
+=======
+>>>>>>> 695d93c (update)
 test("GET /v1/form gets forms with query parameter", async () => {
   await supertest(app)
     .get("/v1/form")
@@ -30,15 +33,21 @@ test("GET /v1/form gets forms with query parameter", async () => {
 
 test("POST /v1/form with correct body parameter", async () => {
   const data = await createFormBodyParameters()
+<<<<<<< HEAD
   console.log(data.dataCorrect)
+=======
+>>>>>>> 695d93c (update)
   await supertest(app)
     .post("/v1/form")
     .send(data.dataCorrect)
     .expect(200)
     .then((response) => {
+<<<<<<< HEAD
       console.log("formId")
       formId = response.body.data._id;
       console.log(formId)
+=======
+>>>>>>> 695d93c (update)
       expect(response.body.status).toEqual("success");
       expect(response.body.message).toEqual(
         "Form created successfully"
@@ -106,9 +115,18 @@ test("GET /v1/form/published/type/smeLegacyyy gets a published form with wrong f
 });
 
 test("GET /v1/form/{formId} gets a single form by form id", async () => {
+<<<<<<< HEAD
   console.log(formId)
         await supertest(app)
         .get(`/v1/form/${formId}`)
+=======
+await supertest(app)
+    .get("/v1/form")
+    .expect(200)
+    .then( async (response) => {
+        await supertest(app)
+        .get(`/v1/form${response.body.data[0]._id}`)
+>>>>>>> 695d93c (update)
         .expect(200)
         .then((response) => {
             expect(response.body.status).toEqual("success");
@@ -116,10 +134,16 @@ test("GET /v1/form/{formId} gets a single form by form id", async () => {
             "Form fetched successfully"
             );
         });
+<<<<<<< HEAD
     
 });
 test("GET /v1/form/{formId} gets a single form with wrong form id", async () => {
   console.log(formId)
+=======
+    });
+});
+test("GET /v1/form/{formId} gets a single form with wrong form id", async () => {
+>>>>>>> 695d93c (update)
 await supertest(app)
     .get("/v1/form/63443d8602dac8e847fc80c6")
     .expect(404)
@@ -132,9 +156,18 @@ await supertest(app)
 });
 
 test("PATCH /v1/form/{formId} update form status", async () => {
+<<<<<<< HEAD
     console.log(formId)
         await supertest(app)
         .patch(`/v1/form/${formId}/formstatus/published`)
+=======
+await supertest(app)
+    .get("/v1/form")
+    .expect(200)
+    .then( async (response) => {
+        await supertest(app)
+        .patch(`/v1/form${response.body.data[0]._id}/formstatus/published`)
+>>>>>>> 695d93c (update)
         .expect(200)
         .then((response) => {
             expect(response.body.status).toEqual("success");
@@ -142,12 +175,24 @@ test("PATCH /v1/form/{formId} update form status", async () => {
             "Form updated successfully"
             );
         });
+<<<<<<< HEAD
     
 });
 test("PATCH /v1/form/{formId} update form status with invalid value", async () => {
 
         await supertest(app)
         .patch(`/v1/form/${formId}/formstatus/publishedddd`)
+=======
+    });
+});
+test("PATCH /v1/form/{formId} update form status with invalid value", async () => {
+await supertest(app)
+    .get("/v1/form")
+    .expect(200)
+    .then( async (response) => {
+        await supertest(app)
+        .patch(`/v1/form${response.body.data[0]._id}/formstatus/publishedddd`)
+>>>>>>> 695d93c (update)
         .expect(400)
         .then((response) => {
             expect(response.body.status).toEqual("success");
@@ -158,13 +203,25 @@ test("PATCH /v1/form/{formId} update form status with invalid value", async () =
             expect(response.body.data.errors[0].param).toEqual("formStatus");
             expect(response.body.data.errors[0].location).toEqual("params");
         });
+<<<<<<< HEAD
   
+=======
+    });
+>>>>>>> 695d93c (update)
 });
 
 test("PUT /v1/form  update full form with correct body parameter", async () => {
     const data = await createFormBodyParameters()
+<<<<<<< HEAD
         await supertest(app)
             .put(`/v1/form/${formId}`)
+=======
+    .get("/v1/form")
+    .expect(200)
+    .then( async (response) => {
+        await supertest(app)
+            .put(`/v1/form${response.body.data[0]._id}`)
+>>>>>>> 695d93c (update)
             .send(data.dataCorrect)
             .expect(200)
             .then((response) => {
@@ -173,12 +230,24 @@ test("PUT /v1/form  update full form with correct body parameter", async () => {
                 "Form updated successfully"
             );
         });
+<<<<<<< HEAD
  
   });
 test("PUT /v1/form  update full form with incomplete body parameter", async () => {
     const data = await createFormBodyParameters()
         await supertest(app)
         .put(`/v1/form/${formId}`)
+=======
+    });
+  });
+test("PUT /v1/form  update full form with incomplete body parameter", async () => {
+    const data = await createFormBodyParameters()
+    .get("/v1/form")
+    .expect(200)
+    .then( async (response) => {
+        await supertest(app)
+        .post(`/v1/form${response.body.data[0]._id}`)
+>>>>>>> 695d93c (update)
         .send(data.dataNoPages)
         .expect(400)
         .then((response) => {
@@ -197,6 +266,10 @@ test("PUT /v1/form  update full form with incomplete body parameter", async () =
           expect(response.body.data.errors[3].param).toEqual("builtFormMetadata.pages");
           expect(response.body.data.errors[3].location).toEqual("body");
         });
+<<<<<<< HEAD
+=======
+    });
+>>>>>>> 695d93c (update)
 });
  
 test("GET /v1/form gets all form types", async () => {
