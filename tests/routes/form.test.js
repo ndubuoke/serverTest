@@ -15,6 +15,7 @@ afterEach(async () => {
   await removeAllCollections();
 });
 
+let formId;
 test("GET /v1/form gets forms with query parameter", async () => {
   await supertest(app)
     .get("/v1/form")
@@ -29,11 +30,15 @@ test("GET /v1/form gets forms with query parameter", async () => {
 
 test("POST /v1/form with correct body parameter", async () => {
   const data = await createFormBodyParameters()
+  console.log(data.dataCorrect)
   await supertest(app)
     .post("/v1/form")
     .send(data.dataCorrect)
     .expect(200)
     .then((response) => {
+      console.log("formId")
+      formId = response.body.data._id;
+      console.log(formId)
       expect(response.body.status).toEqual("success");
       expect(response.body.message).toEqual(
         "Form created successfully"
@@ -101,12 +106,9 @@ test("GET /v1/form/published/type/smeLegacyyy gets a published form with wrong f
 });
 
 test("GET /v1/form/{formId} gets a single form by form id", async () => {
-await supertest(app)
-    .get("/v1/form")
-    .expect(200)
-    .then( async (response) => {
+  console.log(formId)
         await supertest(app)
-        .get(`/v1/form${response.body.data[0]._id}`)
+        .get(`/v1/form/${formId}`)
         .expect(200)
         .then((response) => {
             expect(response.body.status).toEqual("success");
@@ -114,9 +116,10 @@ await supertest(app)
             "Form fetched successfully"
             );
         });
-    });
+    
 });
 test("GET /v1/form/{formId} gets a single form with wrong form id", async () => {
+  console.log(formId)
 await supertest(app)
     .get("/v1/form/63443d8602dac8e847fc80c6")
     .expect(404)
@@ -129,12 +132,9 @@ await supertest(app)
 });
 
 test("PATCH /v1/form/{formId} update form status", async () => {
-await supertest(app)
-    .get("/v1/form")
-    .expect(200)
-    .then( async (response) => {
+    console.log(formId)
         await supertest(app)
-        .patch(`/v1/form${response.body.data[0]._id}/formstatus/published`)
+        .patch(`/v1/form/${formId}/formstatus/published`)
         .expect(200)
         .then((response) => {
             expect(response.body.status).toEqual("success");
@@ -142,15 +142,12 @@ await supertest(app)
             "Form updated successfully"
             );
         });
-    });
+    
 });
 test("PATCH /v1/form/{formId} update form status with invalid value", async () => {
-await supertest(app)
-    .get("/v1/form")
-    .expect(200)
-    .then( async (response) => {
+
         await supertest(app)
-        .patch(`/v1/form${response.body.data[0]._id}/formstatus/publishedddd`)
+        .patch(`/v1/form/${formId}/formstatus/publishedddd`)
         .expect(400)
         .then((response) => {
             expect(response.body.status).toEqual("success");
@@ -161,16 +158,13 @@ await supertest(app)
             expect(response.body.data.errors[0].param).toEqual("formStatus");
             expect(response.body.data.errors[0].location).toEqual("params");
         });
-    });
+  
 });
 
 test("PUT /v1/form  update full form with correct body parameter", async () => {
     const data = await createFormBodyParameters()
-    .get("/v1/form")
-    .expect(200)
-    .then( async (response) => {
         await supertest(app)
-            .put(`/v1/form${response.body.data[0]._id}`)
+            .put(`/v1/form/${formId}`)
             .send(data.dataCorrect)
             .expect(200)
             .then((response) => {
@@ -179,15 +173,12 @@ test("PUT /v1/form  update full form with correct body parameter", async () => {
                 "Form updated successfully"
             );
         });
-    });
+ 
   });
 test("PUT /v1/form  update full form with incomplete body parameter", async () => {
     const data = await createFormBodyParameters()
-    .get("/v1/form")
-    .expect(200)
-    .then( async (response) => {
         await supertest(app)
-        .post(`/v1/form${response.body.data[0]._id}`)
+        .put(`/v1/form/${formId}`)
         .send(data.dataNoPages)
         .expect(400)
         .then((response) => {
@@ -206,7 +197,6 @@ test("PUT /v1/form  update full form with incomplete body parameter", async () =
           expect(response.body.data.errors[3].param).toEqual("builtFormMetadata.pages");
           expect(response.body.data.errors[3].location).toEqual("body");
         });
-    });
 });
  
 test("GET /v1/form gets all form types", async () => {

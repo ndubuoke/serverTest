@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import supertest from "supertest";
 import app from "../../app";
-import removeAllCollections from "../helper";
+import {removeAllCollections} from "../helper";
 
 beforeEach((done) => {
   mongoose.connect(
@@ -11,9 +11,9 @@ beforeEach((done) => {
   );
 });
 
-// afterEach(async () => {
-//   await removeAllCollections();
-// });
+afterEach(async () => {
+  await removeAllCollections();
+});
 
 let formBehaviourId;
 

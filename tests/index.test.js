@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import supertest from "supertest";
 import app from "../app";
-import removeAllCollections from "./helper";
+//import {removeAllCollections} from "./helper";
 
 // This file contains test for index routes
 
