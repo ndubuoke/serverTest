@@ -40,6 +40,13 @@ class FormService {
     const res = await Form.find(query)
     return res;
   }
+
+  async updateOne(query, data) {
+    const res = await Form.findOneAndUpdate(query, data, {
+      new: true,
+    }).select("-__v");
+    return res;
+  }
 }
 
 export default new FormService();
