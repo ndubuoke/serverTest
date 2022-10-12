@@ -13,10 +13,6 @@ beforeEach((done) => {
   );
 });
 
-afterEach(async () => {
-  await removeAllCollections();
-});
-
 test("GET /", async () => {
   await supertest(app)
     .get("/")
