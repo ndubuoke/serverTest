@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import supertest from "supertest";
 import app from "../app";
-import removeAllCollections from "./helper";
+//import {removeAllCollections} from "./helper";
 
 // This file contains test for index routes
 
@@ -11,10 +11,6 @@ beforeEach((done) => {
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => done()
   );
-});
-
-afterEach(async () => {
-  await removeAllCollections();
 });
 
 test("GET /", async () => {
