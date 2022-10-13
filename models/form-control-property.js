@@ -21,6 +21,10 @@ const formControlPropertySchema = new mongoose.Schema(
     defaultState: {
       type: String,
     },
+    value: {
+      type: String,
+      default: "",
+    },
     formControlPropertyItems: [{ type: String }],
     hybridFormControlPropertyItems: [
       {

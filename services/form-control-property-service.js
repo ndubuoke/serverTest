@@ -38,6 +38,16 @@ class FormControlPropertyService {
     const res = await FormControlProperty.find({}).select("-__v");
     return res;
   }
+
+  async findAllAndUpdate() {
+    const res = await FormControlProperty.find();
+    res.map(async (prop) => {
+      await FormControlProperty.findOneAndUpdate(
+        { _id: prop._id.toString() },
+        { $set: { value: "" } }
+      );
+    });
+  }
 }
 
 export default new FormControlPropertyService();
