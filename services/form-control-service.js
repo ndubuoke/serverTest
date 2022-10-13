@@ -40,6 +40,7 @@ class FormControlService {
 
   async findAll() {
     const res = await FormControl.find({})
+      .sort({ createdAt: 1 })
       .populate("formControlProperties")
       .select("-__v");
     return res;
