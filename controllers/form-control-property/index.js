@@ -18,6 +18,21 @@ class FormControlPropertyController {
       });
     }
   }
+  async findAllAndUpdate(req, res) {
+    try {
+      const formControlProperties =
+        await formControlPropertyService.findAllAndUpdate();
+
+      return successResMsg(res, 200, {
+        message: "Form control properties fetched successfully",
+        data: formControlProperties,
+      });
+    } catch (error) {
+      return errorResMsg(res, 500, {
+        message: "Something went wrong while creating form control properties",
+      });
+    }
+  }
 
   async findOne(req, res) {
     try {
