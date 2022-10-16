@@ -157,9 +157,12 @@ class FormController {
 
   async updateOne(req, res) {
     try {
-      const { id } = req.params ,payload = req.body,  query = { formType: req.body.formType }, updateStatusQuery = {formStatus: "deactivated"};
+      const { id } = req.params ,  query = { formType: req.body.formType }, updateStatusQuery = {formStatus: "deactivated"};
+      let  payload = req.body
+      if(payload._id){
+         delete payload._id
+      }
       const form_exists = await formService.findOne(id);
-
       if (!form_exists) {
         return successResMsg(res, 404, {
           message: "Form  not found",
