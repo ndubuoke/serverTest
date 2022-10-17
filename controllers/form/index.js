@@ -10,7 +10,7 @@ class FormController {
       const form = await formService.findAll(query);
 
       return successResMsg(res, 200, {
-        message: "Form  fetched successfully",
+        message: "Forms fetched successfully",
         data: form,
       });
     } catch (error) {
@@ -28,13 +28,13 @@ class FormController {
 
       if (!form_exists) {
         return successResMsg(res, 404, {
-          message: "Form  not found",
+          message: "Form not found",
           data: null,
         });
       }
 
       return successResMsg(res, 200, {
-        message: "Form  fetched successfully",
+        message: "Form fetched successfully",
         data: form_exists,
       });
     } catch (error) {
@@ -118,10 +118,11 @@ class FormController {
       );
 
       return successResMsg(res, 200, {
-        message: "Form updated successfully",
+        message: "Form status updated successfully",
         data: update,
       });
     } catch (error) {
+      console.log(error)
       return errorResMsg(res, 500, {
         message: "Something went wrong while updating form",
       });
@@ -200,7 +201,7 @@ class FormController {
       const form = await formService.createOne(payload);
 
       return successResMsg(res, 200, {
-        message: "Form  created successfully",
+        message: "Form created successfully",
         data: form,
       });
     } catch (error) {
