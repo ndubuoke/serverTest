@@ -63,7 +63,13 @@ class FormBehavioursDataController {
   // fetch all by formType
   async find(req, res) {
     try {
-      const all = await formBehavioursDataService.fetchAll();
+      const formName = req.query.form;
+      if (!formName) {
+        return errorResMsg(res, 400, {
+          message: "Please speciy form type",
+        });
+      }
+      const all = await formBehavioursDataService.findOneByFormType(formName);
       return successResMsg(res, 200, {
         message: "Form controls behaviours data fetched successfully",
         data: all,
@@ -77,18 +83,3 @@ class FormBehavioursDataController {
 }
 
 export default new FormBehavioursDataController();
-
-// {
-//     formType: 'sampleformtype',
-//     behaviourStatus: 'Published',
-//     version: 1,
-//     behaviours: [ { config: [Object], condition: [Object], actions: [Array] } ],
-//     createdBy: 'System admin',
-//     createdById: 'System admin',
-//     lastModifiedBy: 'System admin',
-//     lastModifiedById: 'System admin',
-//     _id: new ObjectId("633f39f56e480c0c02c44d1f"),
-//     createdAt: 2022-10-06T20:26:29.539Z,
-//     updatedAt: 2022-10-06T20:26:29.539Z,
-//     __v: 0
-//   }
