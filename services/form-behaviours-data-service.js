@@ -5,12 +5,7 @@ class FormBehaviourDataService {
     const response = await FormBehavioursData.create(data);
     return response;
   }
-  async fetchAll() {
-    const response = await FormBehavioursData.find({
-      behaviourStatus: "Published",
-    });
-    return response;
-  }
+
   async findOneByFormType(formType) {
     const response = await FormBehavioursData.findOne({
       formType,
