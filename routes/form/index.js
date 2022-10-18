@@ -50,4 +50,8 @@ router.delete("/:id/", formController.deleteOne); // ✔
 router.get("/types/all", formController.findAllFormTypes);
 
 
+// GET PUBLISHED FORM BY FORM TYPE FOR CUSTOMER USE
+router.get("/customer/published/type/:formType", formController.findCustomerPublishedFormByType); // ✔
+
+
 export default router;
