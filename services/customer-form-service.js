@@ -2,6 +2,11 @@ import { CustomerForm } from "../models/customer-form.js";
 
 class CustomerFormService {
 
+  async createOne(payload) {
+    const res = await CustomerForm.create(payload);
+    return res;
+  }
+
 
   async updateManyCustomerFormStatus(query, data) {
     const res = await CustomerForm.updateMany(query, data, {

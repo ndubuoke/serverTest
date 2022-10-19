@@ -15,9 +15,8 @@ app.use(cors());
 // MIDDLEWARES
 app.use(helmet());
 app.use(logger("dev"));
-app.use(json());
-app.use(urlencoded({ extended: false }));
-
+app.use(json({ limit: "200mb" }));
+app.use(urlencoded({ limit: "200mb",  extended: true, parameterLimit: 1000000 }));
 // Default Route
 app.get("/", (req, res) => {
   return successResMsg(res, 200, {
