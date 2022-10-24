@@ -166,7 +166,7 @@ export const FORM_CONTROL_PROPERTY = [
     name: "Enable External Integration",
     description: "Toggling on enables external integration via an API",
     formControlType: "toggle",
-    defaultState: "Off",
+    defaultState: "left",
     lastModifiedById: "System admin",
     lastModifiedBy: "System admin",
     createdById: "System admin",

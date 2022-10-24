@@ -19,6 +19,22 @@ class FormControlController {
     }
   }
 
+  async findAllAndUpdate(req, res) {
+    try {
+      const payload = req.body;
+      const formControls = await formControlService.findAllAndUpdate(payload);
+
+      return successResMsg(res, 200, {
+        message: "Form controls updated successfully",
+        data: formControls,
+      });
+    } catch (error) {
+      return errorResMsg(res, 500, {
+        message: "Something went wrong while updating form controls",
+      });
+    }
+  }
+
   async findOne(req, res) {
     try {
       const { id } = req.params;

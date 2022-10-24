@@ -39,12 +39,12 @@ class FormControlPropertyService {
     return res;
   }
 
-  async findAllAndUpdate() {
+  async findAllAndUpdate(payload) {
     const res = await FormControlProperty.find();
     res.map(async (prop) => {
       await FormControlProperty.findOneAndUpdate(
         { _id: prop._id.toString() },
-        { $set: { value: "" } }
+        { $set: payload }
       );
     });
   }
