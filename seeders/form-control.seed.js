@@ -32,7 +32,8 @@ export const FORM_CONTROL = [
     name: "Heading",
     formControlType: "heading",
     formControlProperties: [
-      "6339c4bf94b2d9efa54318bc", // Label
+      // "6339c4bf94b2d9efa54318bc", // Label
+      "6339c4bf94b2d9efa54318bd", // Field label
       "6339c4bf94b2d9efa54318b6", // Visibility
       "6339c4bf94b2d9efa54318b9", // Toggle Help Text
       "6339c4bf94b2d9efa54318ba", // Help Text
@@ -92,7 +93,8 @@ export const FORM_CONTROL = [
     name: "Info text",
     formControlType: "text_input",
     formControlProperties: [
-      "6339c4bf94b2d9efa54318bc", // Label
+      // "6339c4bf94b2d9efa54318bc", // Label
+      "6339c4bf94b2d9efa54318bd", // Field label
       "6339c4bf94b2d9efa54318b6", // Visibility
       "6339c4bf94b2d9efa54318b9", // Toggle Help Text
       "6339c4bf94b2d9efa54318ba", // Help Text

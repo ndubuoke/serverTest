@@ -45,6 +45,16 @@ class FormControlService {
       .select("-__v");
     return res;
   }
+
+  async findAllAndUpdate(payload) {
+    const res = await FormControl.find();
+    res.map(async (prop) => {
+      await FormControl.findOneAndUpdate(
+        { _id: prop._id.toString() },
+        { $set: payload }
+      );
+    });
+  }
 }
 
 export default new FormControlService();

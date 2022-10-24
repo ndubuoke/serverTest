@@ -9,6 +9,9 @@ router.post("/", formControlController.createOne);
 // GET ALL CONTROLS
 router.get("/", formControlController.findAll); // ✔
 
+// UPDATE ALL PROPERTIES
+router.patch("/update-fields", formControlController.findAllAndUpdate); // ✔
+
 // GET CONTROL BY NAME
 router.get("/name/:name", formControlController.findOneByName); // ✔
 

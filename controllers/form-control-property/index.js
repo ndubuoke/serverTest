@@ -20,8 +20,9 @@ class FormControlPropertyController {
   }
   async findAllAndUpdate(req, res) {
     try {
+      const payload = req.body;
       const formControlProperties =
-        await formControlPropertyService.findAllAndUpdate();
+        await formControlPropertyService.findAllAndUpdate(payload);
 
       return successResMsg(res, 200, {
         message: "Form control properties fetched successfully",

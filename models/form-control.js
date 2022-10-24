@@ -50,6 +50,14 @@ const formControlSchema = new mongoose.Schema(
       type: String,
       default: "The record is active",
     },
+    pageId: {
+      type: String,
+      default: "",
+    },
+    sectionId: {
+      type: String,
+      default: "",
+    },
   },
 
   {
