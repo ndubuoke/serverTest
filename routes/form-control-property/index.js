@@ -9,8 +9,8 @@ router.post("/", formControlPropertyController.createOne);
 // GET ALL PROPERTIES
 router.get("/", formControlPropertyController.findAll); // ✔
 
-// GET ALL PROPERTIES
-router.get("/update-fields", formControlPropertyController.findAllAndUpdate); // ✔
+// UPDATE ALL PROPERTIES
+router.patch("/update-fields", formControlPropertyController.findAllAndUpdate); // ✔
 
 // GET PROPERTY BY NAME
 router.get("/name/:name", formControlPropertyController.findOneByName); // ✔
