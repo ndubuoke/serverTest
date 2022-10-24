@@ -17,7 +17,7 @@ afterEach(async () => {
 
 test("GET /v1/form-behaviours-data", async () => {
   await supertest(app)
-    .get("/v1/form-behaviours-data")
+    .get("/v1/form-behaviours-data?form=sampleformtype")
     .expect(200)
     .then((response) => {
       expect(response.body.status).toEqual("success");
